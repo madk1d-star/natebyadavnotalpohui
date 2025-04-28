@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Видео со звуком по клику</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+    }
+    .video-container {
+      position: relative;
+      width: 90vmin;
+      height: 90vmin;
+      background: #000;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none; /* Сначала скрыто */
+    }
+    .start-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 255, 255, 0.8);
+      border: none;
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      font-size: 30px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+
+<div class="video-container">
+  <video id="myVideo" controls>
+    <source src="videoqq.mp4" type="video/mp4">
+    Ваш браузер не поддерживает видео.
+  </video>
+  <button class="start-button" id="startButton">▶</button>
+</div>
+
+<script>
+  const startButton = document.getElementById('startButton');
+  const video = document.getElementById('myVideo');
+
+  startButton.addEventListener('click', function() {
+    startButton.style.display = 'none'; // Скрываем кнопку
+    video.style.display = 'block';      // Показываем видео
+    video.play();                       // Запускаем видео со звуком
+  });
+</script>
+
+</body>
+</html>
